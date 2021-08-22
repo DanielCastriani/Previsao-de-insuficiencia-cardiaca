@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.formatting.autopep8Args": [
+			"--max-line-length",
+			"140",
+			"--experimental"
+		],
+		"python.sortImports.args": [
+			"-l",
+			"140"
+		],
+		"python.languageServer": "Pylance",
+		"python.analysis.typeCheckingMode": "basic",
+		"jupyter.sendSelectionToInteractiveWindow": true,
+		"jupyter.notebookFileRoot": "${workspaceFolder}",
+		"files.exclude": {
+			"**/__pycache__": true,
+			"**/data": true,
+			"**/.venv": true,
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-python.vscode-pylance",
+			"ms-python.python",
+			"eamodio.gitlens",
+			"ms-toolsai.jupyter",
+			"pkief.material-icon-theme",
+			"njpwerner.autodocstring",
+			"alexcvzz.vscode-sqlite",
+			"mechatroner.rainbow-csv"
+		]
+	},
+}

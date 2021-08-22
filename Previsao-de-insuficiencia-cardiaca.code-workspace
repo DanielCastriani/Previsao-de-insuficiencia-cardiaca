@@ -24,6 +24,7 @@
 			"**/.venv": true,
 		},
 		"python.analysis.diagnosticSeverityOverrides": {
+			"reportGeneralTypeIssues": "none"
 		}
 	},
 	"extensions": {

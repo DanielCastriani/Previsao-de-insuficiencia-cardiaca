@@ -97,18 +97,51 @@ def count_plot_features(heart_failure: pd.DataFrame):
     gs = GridSpec(2, 3, figure=fig)
 
     sns.countplot(x=heart_failure['sex'],
-                    ax=create_ax(0, 0, 'Sexo', gs, fig))
+                  ax=create_ax(0, 0, 'Sexo', gs, fig))
     sns.countplot(x=heart_failure['smoking'],
-                    ax=create_ax(0, 1, 'Fumante', gs, fig))
+                  ax=create_ax(0, 1, 'Fumante', gs, fig))
     sns.countplot(x=heart_failure['anaemia'],
-                    ax=create_ax(0, 2, 'Diminuição hemoglobina', gs, fig))
+                  ax=create_ax(0, 2, 'Diminuição hemoglobina', gs, fig))
 
     sns.countplot(x=heart_failure['high_blood_pressure'],
-                    ax=create_ax(1, 0, 'Pressão Alta', gs, fig))
+                  ax=create_ax(1, 0, 'Pressão Alta', gs, fig))
     sns.countplot(x=heart_failure['diabetes'],
-                    ax=create_ax(1, 1, 'Diabetes', gs, fig))
+                  ax=create_ax(1, 1, 'Diabetes', gs, fig))
     sns.countplot(x=heart_failure['DEATH_EVENT'],
-                    ax=create_ax(1, 2, 'Óbito', gs, fig))
+                  ax=create_ax(1, 2, 'Óbito', gs, fig))
+
+    plt.savefig(path)
+    plt.show()
+
+
+def plot_gender_survival(heart_failure: pd.DataFrame):
+    path = create_path_if_not_exists('public/img/plots', file_name='survival.png')
+
+    fig = plt.figure(figsize=(18, 12), constrained_layout=True)
+    gs = GridSpec(2, 3, figure=fig)
+
+    sns.countplot(x=heart_failure['DEATH_EVENT'], hue=heart_failure['sex'],
+                  ax=create_ax(0, 0, 'Sobrevivente x Sexo', gs, fig))
+    sns.countplot(x=heart_failure['DEATH_EVENT'], hue=heart_failure['smoking'],
+                  ax=create_ax(0, 1, 'Sobrevivente x Fumante', gs, fig))
+    sns.countplot(x=heart_failure['DEATH_EVENT'], hue=heart_failure['anaemia'],
+                  ax=create_ax(0, 2, 'Sobrevivente x Diminuição hemoglobina', gs, fig))
+
+    sns.countplot(x=heart_failure['DEATH_EVENT'], hue=heart_failure['high_blood_pressure'],
+                  ax=create_ax(1, 0, 'Sobrevivente x Pressão Alta', gs, fig))
+    sns.countplot(x=heart_failure['DEATH_EVENT'], hue=heart_failure['diabetes'],
+                  ax=create_ax(1, 1, 'Sobrevivente x Diabetes', gs, fig))
+
+    plt.savefig(path)
+    plt.show()
+
+
+def correlation_plot(heart_failure: pd.DataFrame):
+    corr = heart_failure.corr()
+    path = create_path_if_not_exists('public/img/plots', file_name='correlation.png')
+
+    plt.figure(figsize=(15, 15))
+    sns.heatmap(corr, annot=True)
 
     plt.savefig(path)
     plt.show()
@@ -119,3 +152,4 @@ def plots(heart_failure: pd.DataFrame):
     scatter_age_x_features(heart_failure)
     box_plot_features(heart_failure)
     count_plot_features(heart_failure)
+    correlation_plot(heart_failure)

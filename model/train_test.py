@@ -29,7 +29,7 @@ def fit_model(x_train: pd.DataFrame, y_train: pd.Series):
     )
 
     grid_search.fit(x_train, y_train)
-    print(f"Melhores parametros: {grid_search.best_params_}")
+    print(f"Melhores parâmetros: {grid_search.best_params_}")
     return grid_search.best_estimator_
 
 
@@ -50,8 +50,8 @@ def train_test_pipeline(heart_failure: pd.DataFrame):
 
     path = create_path_if_not_exists('public/img/plots', file_name='conf_matrix.png')
 
-    plot_conf_matrix(y_test, y_pred, path)
-
     print(classification_report(y_test, y_pred))
+
+    plot_conf_matrix(y_test, y_pred, path)
 
     save_model(model, create_path_if_not_exists('bin', file_name='model.pickle'))

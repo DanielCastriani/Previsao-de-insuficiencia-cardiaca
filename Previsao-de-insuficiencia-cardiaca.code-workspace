@@ -46,7 +46,7 @@
 				"name": "RUN main",
 				"type": "python",
 				"request": "launch",
-				"program": "main.py",
+				"program": "Previsao-de-insuficiencia-cardiaca.py",
 				"console": "integratedTerminal"
 			}
 		]

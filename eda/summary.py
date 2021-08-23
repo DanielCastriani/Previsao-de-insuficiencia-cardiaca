@@ -19,13 +19,13 @@ def summary(heart_failure: pd.DataFrame):
 
     recovered, death = count_death(heart_failure)
     print(f"\nVariável target: DEATH_EVENT")
-    print(f'recovered: {recovered}\t\t{recovered/len(heart_failure) * 100}')
-    print(f'death: {death}\t\t{death/len(heart_failure) * 100}')
+    print(f'Recuperado: {recovered}\t\t{recovered/len(heart_failure) * 100}')
+    print(f'Óbito: {death}\t\t{death/len(heart_failure) * 100}')
 
     numeric_cols = ['age', 'creatinine_phosphokinase', 'ejection_fraction', 'platelets', 'serum_creatinine', 'serum_sodium', 'time']
     cat_col = list(set(heart_failure.columns.tolist()) - set(numeric_cols))
 
-    print('\nInformações estatisticas')
+    print('\nInformações estatísticas')
     print(heart_failure[numeric_cols].describe().T)
 
     print("\n==========================================================\n")

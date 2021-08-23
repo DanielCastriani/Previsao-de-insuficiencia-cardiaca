@@ -114,7 +114,7 @@ def count_plot_features(heart_failure: pd.DataFrame):
     plt.show()
 
 
-def plot_gender_survival(heart_failure: pd.DataFrame):
+def plot_survival(heart_failure: pd.DataFrame):
     path = create_path_if_not_exists('public/img/plots', file_name='survival.png')
 
     fig = plt.figure(figsize=(18, 12), constrained_layout=True)
@@ -152,4 +152,5 @@ def plots(heart_failure: pd.DataFrame):
     scatter_age_x_features(heart_failure)
     box_plot_features(heart_failure)
     count_plot_features(heart_failure)
+    plot_survival(heart_failure)
     correlation_plot(heart_failure)

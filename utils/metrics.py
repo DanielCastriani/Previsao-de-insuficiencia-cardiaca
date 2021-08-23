@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-def plot_conf_matrix(y_test: np.array, y_pred: np.array, path: str = None):
+def plot_conf_matrix(y_test: np.array, y_pred: np.array, path: str = None, show: bool = True):
     conf_matrix = confusion_matrix(y_test, y_pred)
 
     plt.figure()
@@ -14,4 +14,5 @@ def plot_conf_matrix(y_test: np.array, y_pred: np.array, path: str = None):
     if path:
         plt.savefig(path)
 
-    plt.show()
+    if show:
+        plt.show()

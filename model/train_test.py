@@ -37,7 +37,7 @@ def predict(x_test: pd.DataFrame, model):
     return model.predict(x_test)
 
 
-def train_test_pipeline(heart_failure: pd.DataFrame):
+def train_test_pipeline(heart_failure: pd.DataFrame, show: bool = True):
     heart_failure = make_feature_engineering(heart_failure)
 
     y = heart_failure['DEATH_EVENT']
@@ -52,6 +52,6 @@ def train_test_pipeline(heart_failure: pd.DataFrame):
 
     print(classification_report(y_test, y_pred))
 
-    plot_conf_matrix(y_test, y_pred, path)
+    plot_conf_matrix(y_test, y_pred, path, show)
 
     save_model(model, create_path_if_not_exists('bin', file_name='model.pickle'))

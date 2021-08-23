@@ -20,6 +20,15 @@ Para rodar todas as funções, basta executar o arquivo main.py
 python Previsao-de-insuficiencia-cardiaca.py
 ```
 
+Para executar um servidor HTTP e realizar o treino do model, basta rodar o seguinte comando.
+```
+python server.py
+```
+Depois é necessário realizar uma requisição GET para http://\[url da vm]:5000/train_test. 
+
+É possível analisar os resultados do treinamento do modelo acessando http://\[url da vm]:5000/public/img/plots/conf_matrix.png
+
+
 Caso ocorra o seguinte alerta, basta instalar o python3-tk:  
 ```
 UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure. 
@@ -126,16 +135,17 @@ Sobre o dataset
 
 Foi utilizado o random fores classifier, e foi obtido uma acurácia de 76%
 
-Melhores parâmetros: {'criterion': 'entropy', 'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 8, 'n_estimators': 150}
+Melhores parâmetros: {'criterion': 'entropy', 'max_depth': None, 'min_samples_leaf': 8, 'min_samples_split': 8, 'n_estimators': 150}
 
 ![Box Plot](public/img/plots/conf_matrix.png)
 
 ```
               precision    recall  f1-score   support
 
-           0       0.74      0.91      0.82        44
-           1       0.81      0.55      0.65        31
-    accuracy                           0.76        75
-   macro avg       0.78      0.73      0.74        75
-weighted avg       0.77      0.76      0.75        75
+           0       0.71      0.91      0.80        44
+           1       0.79      0.48      0.60        31
+
+    accuracy                           0.73        75
+   macro avg       0.75      0.70      0.70        75
+weighted avg       0.75      0.73      0.72        75
 ```

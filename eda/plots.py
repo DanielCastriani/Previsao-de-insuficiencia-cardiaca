@@ -14,7 +14,7 @@ def create_ax(x: int, y: int, title: str, gs: GridSpec, fig: Figure):
     return ax
 
 
-def feature_distribution(heart_failure: pd.DataFrame):
+def feature_distribution(heart_failure: pd.DataFrame, show: bool = True):
     path = create_path_if_not_exists('public/img/plots', file_name='distplot.png')
 
     fig = plt.figure(figsize=(18, 12), constrained_layout=True)
@@ -37,10 +37,12 @@ def feature_distribution(heart_failure: pd.DataFrame):
                  ax=create_ax(1, 2, 'Acompanhamento (dias)', gs, fig))
 
     plt.savefig(path)
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def box_plot_features(heart_failure: pd.DataFrame):
+def box_plot_features(heart_failure: pd.DataFrame, show: bool = True):
     path = create_path_if_not_exists('public/img/plots', file_name='boxplot.png')
 
     fig = plt.figure(figsize=(18, 12), constrained_layout=True)
@@ -63,10 +65,12 @@ def box_plot_features(heart_failure: pd.DataFrame):
                 ax=create_ax(1, 2, 'Acompanhamento (dias)', gs, fig))
 
     plt.savefig(path)
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def scatter_age_x_features(heart_failure: pd.DataFrame):
+def scatter_age_x_features(heart_failure: pd.DataFrame, show: bool = True):
     path = create_path_if_not_exists('public/img/plots', file_name='scatter_age.png')
 
     fig = plt.figure(figsize=(18, 12), constrained_layout=True)
@@ -87,10 +91,12 @@ def scatter_age_x_features(heart_failure: pd.DataFrame):
                     ax=create_ax(1, 2, 'Idade x Acompanhamento (dias)', gs, fig))
 
     plt.savefig(path)
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def count_plot_features(heart_failure: pd.DataFrame):
+def count_plot_features(heart_failure: pd.DataFrame, show: bool = True):
     path = create_path_if_not_exists('public/img/plots', file_name='count_plot.png')
 
     fig = plt.figure(figsize=(18, 12), constrained_layout=True)
@@ -111,10 +117,12 @@ def count_plot_features(heart_failure: pd.DataFrame):
                   ax=create_ax(1, 2, 'Óbito', gs, fig))
 
     plt.savefig(path)
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def plot_survival(heart_failure: pd.DataFrame):
+def plot_survival(heart_failure: pd.DataFrame, show: bool = True):
     path = create_path_if_not_exists('public/img/plots', file_name='survival.png')
 
     fig = plt.figure(figsize=(18, 12), constrained_layout=True)
@@ -133,10 +141,12 @@ def plot_survival(heart_failure: pd.DataFrame):
                   ax=create_ax(1, 1, 'Sobrevivente x Diabetes', gs, fig))
 
     plt.savefig(path)
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def correlation_plot(heart_failure: pd.DataFrame):
+def correlation_plot(heart_failure: pd.DataFrame, show: bool = True):
     corr = heart_failure.corr()
     path = create_path_if_not_exists('public/img/plots', file_name='correlation.png')
 
@@ -144,13 +154,15 @@ def correlation_plot(heart_failure: pd.DataFrame):
     sns.heatmap(corr, annot=True)
 
     plt.savefig(path)
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def plots(heart_failure: pd.DataFrame):
-    feature_distribution(heart_failure)
-    scatter_age_x_features(heart_failure)
-    box_plot_features(heart_failure)
-    count_plot_features(heart_failure)
-    plot_survival(heart_failure)
-    correlation_plot(heart_failure)
+def plots(heart_failure: pd.DataFrame, show: bool = True):
+    feature_distribution(heart_failure, show)
+    scatter_age_x_features(heart_failure, show)
+    box_plot_features(heart_failure, show)
+    count_plot_features(heart_failure, show)
+    plot_survival(heart_failure, show)
+    correlation_plot(heart_failure, show)

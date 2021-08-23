@@ -39,4 +39,16 @@
 			"mechatroner.rainbow-csv"
 		]
 	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "RUN main",
+				"type": "python",
+				"request": "launch",
+				"program": "main.py",
+				"console": "integratedTerminal"
+			}
+		]
+	}
 }

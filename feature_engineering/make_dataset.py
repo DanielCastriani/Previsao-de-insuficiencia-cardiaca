@@ -1,8 +1,7 @@
-import pickle
 
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
-from utils.file_utils import create_path_if_not_exists
+from utils.file_utils import create_path_if_not_exists, save_model
 
 
 def make_feature_engineering(heart_failure: pd.DataFrame):
@@ -22,7 +21,6 @@ def make_feature_engineering(heart_failure: pd.DataFrame):
 
     heart_failure[numerical_col] = scaler.fit_transform(heart_failure[numerical_col])
 
-    with open(path, 'wb') as f:
-        pickle.dump(scaler, f)
+    save_model(scaler, path)
 
     return heart_failure

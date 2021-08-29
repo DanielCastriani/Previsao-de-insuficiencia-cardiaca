@@ -1,4 +1,5 @@
 # https://github.com/DanielCastriani/Previsao-de-insuficiencia-cardiaca
+
 from flask import Flask
 from flask.helpers import send_from_directory
 
